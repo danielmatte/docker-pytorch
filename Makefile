@@ -12,7 +12,7 @@ build-gpu bg:
 	@$(DOCKER_COMMAND) build -t $(REGISTRY_URL)/$(SVC):$(VERSION_GPU) -f $(GPU_DOCKER_FILE) .
 run-gpu rg:
 	@echo "[run] Running gpu docker image..."
-	@$(NVIDIA_DOCKER_COMMAND) run -it --rm --userns=host --ipc=host --volume=$(pwd)/..:$(pwd)/.. --workdir=$(pwd) $(REGISTRY_URL)/$(SVC):$(VERSION_GPU)
+	@$(NVIDIA_DOCKER_COMMAND) run -it --rm --userns=host --ipc=host --volume=$(shell pwd)/..:$(shell pwd)/.. --workdir=$(shell pwd) $(REGISTRY_URL)/$(SVC):$(VERSION_GPU)
 upload-gpu ug:
 	@echo "[upload] Uploading gpu docker image..."
 	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC)
